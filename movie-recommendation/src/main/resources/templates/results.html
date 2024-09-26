@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+	<link href="style.css"rel="stylesheet"/>
+    <style>
+		.page-content {
+		    font-family: Arial, sans-serif;
+		    background-color: #f8f9fa;
+		    margin: 0;
+		    padding: 0;
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		}
+
+		.movie-results h1 {
+		    text-align: center;
+		    margin: 20px 0;
+		    font-size: 32px;
+		    color: #343a40;
+		}
+
+		.movie-list {
+		    list-style-type: none;
+		    padding: 0;
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: center;
+		    margin: 0 auto;
+		    max-width: 1200px;
+		}
+
+		.movie-item {
+		    margin: 15px;
+		    flex-basis: calc(25% - 30px); /* 4 posters per row */
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		    background-color: #ffffff;
+		    border-radius: 8px;
+		    padding: 10px;
+		    transition: transform 0.3s ease;
+		}
+
+		.movie-item:hover {
+		    transform: scale(1.05);
+		}
+
+		.movie-item p {
+		    font-size: 18px;
+		    font-weight: bold;
+		    color: #495057;
+		    text-align: center;
+		    margin: 10px 0;
+		}
+
+		.movie-item img {
+		    width: 100%;
+		    border-radius: 8px;
+		}
+
+		/* Media queries for responsiveness */
+		@media (max-width: 768px) {
+		    .movie-item {
+		        flex-basis: calc(50% - 30px); /* 2 posters per row on smaller screens */
+		    }
+		}
+
+		@media (max-width: 480px) {
+		    .movie-item {
+		        flex-basis: 100%; /* 1 poster per row on very small screens */
+		    }
+		}
+		title{
+			margin-bottom: 20px;
+		}
+
+        /* Styling for the navigation bar */
+
+    </style>
+    <title>MOVIERECOM</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" />
+</head>
+
+<header class="navigation-bar">
+        <h1>
+            <span class="logo-movie">MOVIE</span><span class="logo-mood">MOOD</span>
+        </h1>
+        <nav>
+            <div class="navigation-list">
+                <a href="/">HOME</a>
+                <a href="#">CONTACT</a>
+            </div>
+        </nav>
+    </header>
+
+<body>
+    
+	<div class="heading">
+	        <h1 class="title">WE RECOMMEND YOU THE FOLLOWING MOVIES</h1>
+	    </div>
+    <div>
+        <ul class="movie-list">
+            <!-- Loop through movieNames and access posterPaths using the loop index -->
+            <li class="movie-item" th:each="movie, stat : ${movieNames}">
+                <p th:text="${movie}"></p>
+                <img th:src="'https://image.tmdb.org/t/p/w500' + ${posterPaths[stat.index]}" alt="Movie Poster">
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
