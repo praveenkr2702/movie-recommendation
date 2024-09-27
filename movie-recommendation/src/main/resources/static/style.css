@@ -30,7 +30,7 @@ body {
     gap: 20px;
     padding: 10px 60px;
     box-shadow: 0.5px 0.5px 100px #dedddd;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -65,13 +65,14 @@ body {
     color: #2b2d42;
     font-size: 30px;
     justify-content: center;
+	margin-bottom: 10px;
 }
 
 .search-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 150px;
+  /*  height: 150px; */
 }
 
 .search-bar {
@@ -82,7 +83,7 @@ body {
     border: 1px solid #f0d0d4;
     padding: 10px;
     width: 400px;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
 }
 
 .search-input {
@@ -127,26 +128,17 @@ body {
     fill: #e01e37;
     transition: 0.2s;
 }
-
-.emoji-right img, .emoji-left img {
-    z-index: -1;
-    position: fixed;
-    transform: rotate(-10deg);
+.barbie
+{
+	display: flex;
+	justify-content: center;
 }
 
-.emoji-right img {
-    width: 400px;
-    height: 400px;
-    right: 150px;
-    bottom: 100px;
+.barbie img{
+width: 180px;
+height: 180px;
 }
 
-.emoji-left img {
-    width: 300px;
-    height: 300px;
-    left: 200px;
-    top: 300px;
-}
 
 /* Responsive Styling */
 @media (max-width: 1200px) {
@@ -191,24 +183,17 @@ body {
     }
 
     .search-bar {
-        width: 80%; /* Adjust width to fit smaller screens */
+        width: 90%; /* Adjust width to fit smaller screens */
     }
 
-    .emoji-right img, .emoji-left img {
-        display: none; /* Hide emojis on mobile */
-    }
+	
+
 
     .search-container {
         flex-direction: column; /* Position emojis below the search bar */
     }
 
-    .emoji-right img {
-        order: 2;
-    }
 
-    .emoji-left img {
-        order: 1;
-    }
 }
 
 @media (max-width: 480px) {
@@ -224,15 +209,12 @@ body {
         width: 90%; /* Maximize width on very small screens */
     }
 
-    .emoji-right img, .emoji-left img {
-        width: 150px;
-        height: 150px;
-        margin: 5px 0;
-    }
 
     .search-input {
         font-size: 14px; /* Smaller font size */
     }
+	
+
 
     .heading {
         font-size: 20px; /* Reduce heading size for mobile screens */
