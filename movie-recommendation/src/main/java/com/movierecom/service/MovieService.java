@@ -128,41 +128,51 @@ public class MovieService {
 	}
 
 	public List<ArrayList<String>> movieRecommendation(String keyWordIds) throws IOException {
-		
-		OkHttpClient client = new OkHttpClient();
 
-		Request request = new Request.Builder()
-		  .url("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords="+keyWordIds)
-		  .get()
-		  .addHeader("accept", "application/json")
-		  .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzMxZjQ1YzkyNWE0MzRkNmJmOTQzNjI1ODQ1ZjE0YyIsIm5iZiI6MTcyNzE4OTI3MS40MjMxNjEsInN1YiI6IjY2ZjI1OTgyZmMwMDk4MzkxNDhkNjQxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2eUDtoCGASghQkv5W0pLZ0uR1DebsXqK1kQDqS_O4fQ")
-		  .build();
+	    OkHttpClient client = new OkHttpClient();
+	    ArrayList<String> movieNames = new ArrayList<>();
+	    ArrayList<String> posterPaths = new ArrayList<>();
 
-		Response response = client.newCall(request).execute();
-		
-		String movieJsonString = response.body().string();
-		
-		System.out.println("movie json >>> "+movieJsonString);
-		
-		
-		
-		JSONObject movieJsonObject = new JSONObject(movieJsonString);
-		
-		JSONArray movieJsonArray = movieJsonObject.getJSONArray("results");
-		
-		ArrayList<String> movieNames = new ArrayList<>();
-		ArrayList<String> posterPaths = new ArrayList<>();
-		
-		
-		for(int i=0;i<movieJsonArray.length();i++)
-		{
-			JSONObject tempJsonObj = movieJsonArray.getJSONObject(i);
-			movieNames.add(tempJsonObj.getString("original_title"));
-			posterPaths.add("https://image.tmdb.org/t/p/w185"+tempJsonObj.optString("poster_path"));
-		}
-		
-		return Arrays.asList(movieNames,posterPaths);
-		
+	    int currentPage = 1;
+	    int totalPages=0;
+
+	    do {
+	        // Build the request for the current page
+	        Request request = new Request.Builder()
+	            .url("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=" + currentPage + "&sort_by=popularity.desc&with_keywords=" + keyWordIds)
+	            .get()
+	            .addHeader("accept", "application/json")
+	            .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzMxZjQ1YzkyNWE0MzRkNmJmOTQzNjI1ODQ1ZjE0YyIsIm5iZiI6MTcyNzE4OTI3MS40MjMxNjEsInN1YiI6IjY2ZjI1OTgyZmMwMDk4MzkxNDhkNjQxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2eUDtoCGASghQkv5W0pLZ0uR1DebsXqK1kQDqS_O4fQ")
+	            .build();
+
+	        // Execute the request
+	        Response response = client.newCall(request).execute();
+	        String movieJsonString = response.body().string();
+
+	        // Parse the JSON response
+	        JSONObject movieJsonObject = new JSONObject(movieJsonString);
+	        JSONArray movieJsonArray = movieJsonObject.getJSONArray("results");
+
+	        // If this is the first iteration, get the total number of pages
+	        if (currentPage == 1) {
+	            totalPages = movieJsonObject.getInt("total_pages")/2;
+	        }
+
+	        // Add movies and poster paths from the current page to the lists
+	        for (int i = 0; i < movieJsonArray.length(); i++) {
+	            JSONObject tempJsonObj = movieJsonArray.getJSONObject(i);
+	            movieNames.add(tempJsonObj.getString("original_title"));
+	            posterPaths.add("https://image.tmdb.org/t/p/w185" + tempJsonObj.optString("poster_path"));
+	        }
+
+	        // Move to the next page
+	        currentPage++;
+
+	    } while (currentPage <= totalPages);
+
+	    // Return the list of movie names and poster paths
+	    return Arrays.asList(movieNames, posterPaths);
 	}
+
 
 }
