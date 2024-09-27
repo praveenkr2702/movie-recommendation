@@ -35,11 +35,9 @@ public class PromptController {
 		this.storedPrompt=prompt;
 		model.addAttribute("prompt",prompt);
 		
-		System.out.println("prompt >>> " + storedPrompt);
-		
 		
 		//skipping the AI functionality as of now
-		java.util.List<ArrayList<String>> list = movieService.getGenreId(storedPrompt);
+		java.util.List<ArrayList<String>> list = movieService.getKeyWordId(storedPrompt);
 		
 		ArrayList<String> movieNames=list.get(0);
 		ArrayList<String> posterPaths = list.get(1);
