@@ -176,13 +176,14 @@ body {
 @media (max-width: 768px) {
     .navigation-bar {
         flex-direction: column;
-        align-items: center; /* Changed from flex-start to center */
+        align-items: center; /* Center items */
         justify-content: center;
+        padding: 10px 20px; /* Adjust padding */
     }
 
     .navigation-list {
         flex-direction: column;
-        gap: 20px;
+        gap: 10px; /* Reduce gap */
     }
 
     .logo-movie, .logo-mood {
@@ -190,7 +191,7 @@ body {
     }
 
     .search-bar {
-        width: 300px;
+        width: 80%; /* Adjust width to fit smaller screens */
     }
 
     .emoji-right img, .emoji-left img {
@@ -217,7 +218,7 @@ body {
 
 @media (max-width: 480px) {
     .navigation-bar {
-        padding: 10px 20px;
+        padding: 10px 15px; /* Adjust padding for smaller screens */
     }
 
     .logo-movie, .logo-mood {
@@ -225,7 +226,7 @@ body {
     }
 
     .search-bar {
-        width: 250px;
+        width: 90%; /* Maximize width on very small screens */
     }
 
     .emoji-right img, .emoji-left img {
@@ -233,15 +234,8 @@ body {
         height: 150px;
         margin: 5px 0;
     }
-}
 
-/* Add this to your existing CSS */
-
-@media (max-width: 768px) {
-    .emoji-right img, .emoji-left img {
-        display: none; /* Hide emojis on mobile devices */
-		
-		/* Hide emojis on mobile devices */
+    .search-input {
+        font-size: 14px; /* Smaller font size */
     }
 }
-
