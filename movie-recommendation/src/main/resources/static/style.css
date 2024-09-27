@@ -195,16 +195,11 @@ body {
     }
 
     .emoji-right img, .emoji-left img {
-        position: static; /* Remove fixed positioning */
-        transform: rotate(0deg);
-        width: 200px;
-        height: 200px;
-        margin: 10px 0;
+        display: none; /* Hide emojis on mobile */
     }
 
-    /* Position emojis below the search bar */
     .search-container {
-        flex-direction: column;
+        flex-direction: column; /* Position emojis below the search bar */
     }
 
     .emoji-right img {
@@ -237,5 +232,9 @@ body {
 
     .search-input {
         font-size: 14px; /* Smaller font size */
+    }
+
+    .heading {
+        font-size: 20px; /* Reduce heading size for mobile screens */
     }
 }
