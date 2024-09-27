@@ -200,6 +200,7 @@ height: 260px;
 
 @media (max-width: 480px) {
     .navigation-bar {
+		margin-bottom: 60px;
         padding: 10px 15px; /* Adjust padding for smaller screens */
     }
 
@@ -223,7 +224,7 @@ height: 260px;
     }
 	
 	.barbie img{
-	width: 180px;
-	height: 180px;
+	width: 250px;
+	height: 250px;
 	}
 }
