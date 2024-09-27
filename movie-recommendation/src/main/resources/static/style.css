@@ -240,6 +240,8 @@ body {
 @media (max-width: 768px) {
     .emoji-right img, .emoji-left img {
         display: none; /* Hide emojis on mobile devices */
+		
+		/* Hide emojis on mobile devices */
     }
 }
 
