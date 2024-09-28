@@ -57,6 +57,7 @@ body {
     transition: 0.5s;
 }
 
+
 .heading {
     display: flex;
     text-align: center;
@@ -128,6 +129,14 @@ body {
     fill: #e01e37;
     transition: 0.2s;
 }
+
+
+.search-button svg:active {
+    fill: #e01e37;
+    transition: 0.2s;
+}
+
+
 .barbie
 {
 	display: flex;
