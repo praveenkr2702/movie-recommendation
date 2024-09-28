@@ -108,7 +108,7 @@
             <!-- Loop through movieNames and access posterPaths using the loop index -->
             <li class="movie-item" th:each="movie, stat : ${movieNames}">
                 <p th:text="${movie}"></p>
-                <img th:src="'https://image.tmdb.org/t/p/w500' + ${posterPaths[stat.index]}" alt="Movie Poster">
+                <img th:src="'https://image.tmdb.org/t/p/original' + ${posterPaths[stat.index]}" alt="Movie Poster">
             </li>
         </ul>
     </div>
