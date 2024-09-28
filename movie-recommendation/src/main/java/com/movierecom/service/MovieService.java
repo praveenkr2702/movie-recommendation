@@ -162,7 +162,7 @@ public class MovieService {
 	        for (int i = 0; i < movieJsonArray.length(); i++) {
 	            JSONObject tempJsonObj = movieJsonArray.getJSONObject(i);
 	            movieNames.add(tempJsonObj.getString("original_title"));
-	            posterPaths.add("https://image.tmdb.org/t/p/w185" + tempJsonObj.optString("poster_path"));
+	            posterPaths.add(tempJsonObj.optString("poster_path"));
 	        }
 
 	        // Move to the next page
